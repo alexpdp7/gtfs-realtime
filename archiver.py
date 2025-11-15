@@ -15,11 +15,12 @@ previous = None
 output: pathlib.Path = args.output
 
 while True:
-    time.sleep(15)
+    time.sleep(5)
     with urllib.request.urlopen(args.url) as f:
         content = f.read()
     if content == previous:
         continue
+    previous = content
     now = datetime.datetime.now()
     path = output / now.strftime("%Y") / now.strftime("%m") / now.strftime("%d") / now.isoformat(timespec="seconds")
     path.parent.mkdir(parents=True, exist_ok=True)
