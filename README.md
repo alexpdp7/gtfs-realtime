@@ -1,7 +1,7 @@
 # `gtfs-realtime`
 
 Many transit operators publish realtime information about vehicle positions.
-You can find [such feeds at the Mobility Database](https://mobilitydatabase.org/feeds?gtfs_rt=true).
+You can find [realtime vehicle positions feeds at the Mobility Database](https://mobilitydatabase.org/feeds?gtfs_rt=true).
 
 ## Examining the data
 
