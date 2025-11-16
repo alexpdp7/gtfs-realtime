@@ -36,3 +36,5 @@ atocha_stops = dict([(s.trip_id, s) for s in ss if s.stop_id == "18000"])
 entrevias_stops = dict([(s.trip_id, s) for s in ss if s.stop_id == "70002"])
 [(atocha_stop.date, entrevias_stop.date) for trip_id, entrevias_stop in entrevias_stops.items() for trip_id2, atocha_stop in atocha_stops.items() if trip_id == trip_id2 and atocha_stop.date < entrevias_stop.date]
 ```
+
+(You can find the stop identifiers [here](https://data.renfe.com/dataset/estaciones-listado-completo "Complete list of Renfe train stops").)
