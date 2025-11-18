@@ -30,11 +30,12 @@ while true ; do ./archiver.py https://gtfsrt.renfe.com/vehicle_positions.pb out 
 The following Python code gets the trip times between Renfe's "MADRID-ATOCHA CERCANÍAS" and "ASAMBLEA DE MADRID-ENTREVÍAS":
 
 ```python
-import lib, pathlib
+import itertools, pathlib, lib
 ss = list(lib.first_stopped_ats(lib.parse_all_files(pathlib.Path("out"))))
 atocha_stops = dict([(s.trip_id, s) for s in ss if s.stop_id == "18000"])
 entrevias_stops = dict([(s.trip_id, s) for s in ss if s.stop_id == "70002"])
-[(atocha_stop.date, entrevias_stop.date) for trip_id, entrevias_stop in entrevias_stops.items() for trip_id2, atocha_stop in atocha_stops.items() if trip_id == trip_id2 and atocha_stop.date < entrevias_stop.date]
+trips = [(atocha_stop, entrevias_stop) for trip_id, entrevias_stop in entrevias_stops.items() for trip_id2, atocha_stop in atocha_stops.items() if trip_id == trip_id2 and atocha_stop.date < entrevias_stop.date]
+print("\n".join([f"{atocha_stop.date} >> {entrevias_stop.date.time()} travel: {entrevias_stop.date - atocha_stop.date} stop from previous {entrevias_stop.date - previous_entrevias_stop.date}" for ((previous_atocha_stop, previous_entrevias_stop), (atocha_stop, entrevias_stop)) in itertools.pairwise(trips)]))
 ```
 
 (You can find the stop identifiers [here](https://data.renfe.com/dataset/estaciones-listado-completo "Complete list of Renfe train stops").)
