@@ -39,3 +39,7 @@ print("\n".join([f"{atocha_stop.date} >> {entrevias_stop.date.time()} travel: {e
 ```
 
 (You can find the stop identifiers [here](https://data.renfe.com/dataset/estaciones-listado-completo "Complete list of Renfe train stops").)
+
+## Alternatives
+
+* https://transsee.ca/ (paid service, can add custom feeds)
