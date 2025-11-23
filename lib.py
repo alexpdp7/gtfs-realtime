@@ -18,7 +18,7 @@ class DateMessage:
 def parse(path: pathlib.Path) -> DateMessage:
     message = gtfs_realtime_pb2.FeedMessage()
     message.ParseFromString(path.read_bytes())
-    return DateMessage(datetime.datetime.fromisoformat(path.name), message)
+    return DateMessage(datetime.datetime.fromtimestamp(message.header.timestamp), message)
 
 
 def parse_all_files(path: pathlib.Path) -> list[DateMessage]:
