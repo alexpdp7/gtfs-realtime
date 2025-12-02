@@ -43,3 +43,4 @@ print("\n".join([f"{atocha_stop.date} >> {entrevias_stop.date.time()} travel: {e
 ## Alternatives
 
 * https://transsee.ca/ (paid service, can add custom feeds)
+* https://www.puntual.cat/ (only Rodalies and FGC from Catalonia)
